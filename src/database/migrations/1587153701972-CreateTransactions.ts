@@ -12,7 +12,7 @@ export default class CreateTransactions1587153701972
             type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
-            // default: 'uuid_generat_v4()',
+            default: 'uuid_generate_v4()',
           },
           {
             name: 'title',
@@ -20,7 +20,9 @@ export default class CreateTransactions1587153701972
           },
           {
             name: 'value',
-            type: 'numeric',
+            type: 'decimal',
+            precision: 10,
+            scale: 2,
           },
           {
             name: 'type',
@@ -39,6 +41,7 @@ export default class CreateTransactions1587153701972
           {
             name: 'updated_at',
             type: 'timestamp with time zone',
+            default: 'now()',
           },
         ],
       }),

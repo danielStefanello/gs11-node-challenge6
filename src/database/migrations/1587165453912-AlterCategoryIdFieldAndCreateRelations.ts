@@ -8,9 +8,10 @@ import {
 export default class AlterCategoryIdFieldAndCreateRelations1587165453912
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.changeColumn(
+    await queryRunner.dropColumn('transactions', 'category_id');
+
+    await queryRunner.addColumn(
       'transactions',
-      'category_id',
       new TableColumn({
         name: 'category_id',
         type: 'uuid',
@@ -34,9 +35,10 @@ export default class AlterCategoryIdFieldAndCreateRelations1587165453912
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey('transactions', 'CategoryId');
 
-    await queryRunner.changeColumn(
+    await queryRunner.dropColumn('transactions', 'category_id');
+
+    await queryRunner.addColumn(
       'transactions',
-      'category_id',
       new TableColumn({
         name: 'category_id',
         type: 'varchar',

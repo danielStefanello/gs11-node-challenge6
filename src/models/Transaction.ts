@@ -4,6 +4,8 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 import Category from './Category';
@@ -16,10 +18,10 @@ class Transaction {
   @Column()
   title: string;
 
-  @Column('enum')
+  @Column()
   type: 'income' | 'outcome';
 
-  @Column()
+  @Column('decimal')
   value: number;
 
   @Column()
@@ -29,10 +31,10 @@ class Transaction {
   @JoinColumn({ name: 'category_id' })
   category: Category;
 
-  @Column('timestamp with time zone')
+  @CreateDateColumn()
   created_at: Date;
 
-  @Column('timestamp with time zone')
+  @UpdateDateColumn()
   updated_at: Date;
 }
 
